@@ -102,6 +102,30 @@ router.get("/films/:filmId", function(req, res){
        //if there is no match give an error response
        res.send("The film id doesn't match any movie")
 })
-
+router.get('/sol1', function(req, res){
+    let arr = [1,2,3,4,5,7,8,9]
+    let missingValue;
+    for(let i = 1; i< arr.length; i++){
+        if(arr[i] - arr[i-1] != 1) {
+          missingValue = arr[i-1] + 1
+          console.log(missingValue)
+          break;
+        }
+    }
+    res.send({missingValue})
+})
+router.get('/sol2', function(req, res){
+    let arr = [33, 34, 35, 37, 38]
+    let missingValue;
+    for(let i = 1; i< arr.length; i++){
+        if(arr[i] - arr[i-1] != 1) {
+          missingValue = arr[i-1] + 1
+          console.log(missingValue)
+          break;
+        }
+    }
+    res.send({missingValue})
+})
 module.exports = router;
+
 // adding this comment for no reason
