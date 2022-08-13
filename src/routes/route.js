@@ -13,53 +13,51 @@ router.get('/test-me', function (req, res) {
     res.send('My first ever api!')
 });
 
-let players =
+let persons =
    [
        {
            "name": "manish",
-           "dob": "1/1/1995",
-           "gender": "male",
-           "city": "jalandhar",
-           "sports": [
-               "swimming"
-           ]
+           "age":20,
+           "votingstatus":false,
        },
        {
            "name": "gopal",
-           "dob": "1/09/1995",
-           "gender": "male",
-           "city": "delhi",
-           "sports": [
-               "soccer"
-           ]
+           "age":15,
+           "votingstatus":false,
        },
        {
-           "name": "lokesh",
-           "dob": "1/1/1990",
-           "gender": "male",
-           "city": "mumbai",
-           "sports": [
-               "soccer"
-           ]
+           "name": "pawan",
+           "age":10,
+           "votingstatus":false,
        },
+       {
+        "name": "vidya",
+        "age":25,
+        "votingstatus":false,
+    },
+    {
+        "name": "vikash",
+        "age":30,
+        "votingstatus":false,
+    },
    ]
 
-   router.post('/players', function (req, res) {
+   router.post('/persons', function (req, res) {
 
-    let bodyplayer= req.body
-    let bodyplayername= bodyplayer.name
-    let isbodyplayername= false
+    let uservotingage= req.body.votingage
+     let eligibleperson=[]
+    
 
-    for( let i=0;i<players.length;i++ ) {
-        if( players[i].name==bodyplayername ) {
-            isbodyplayername=true;
-            res.send('This player is already exist please enter another player name')
-            break; 
-        } else {
-            players.push(bodyplayer)
-            res.send(  { players }  )
+    for( let i=0;i<persons.length;i++ ) {
+        if( persons[i].age>uservotingage ) {
+            persons[i].votingstatus=true;
+            eligibleperson.push(persons[i]) 
+              
         }
+        
     }
+    res.send({"votingperson":eligibleperson,"status":true})
+    
    })
 
 
