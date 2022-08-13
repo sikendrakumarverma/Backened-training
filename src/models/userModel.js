@@ -18,9 +18,9 @@ const userSchema = new mongoose.Schema( {
     // parentsInfo: {
     //     motherName: String,
     //     fatherName: String,
-    //     siblingName: String
+    //     SiblingsName: String
     // },
-    // cars: [ String  ]
+    // motorcars: [ String  ]
 }, { timestamps: true });
 
 module.exports = mongoose.model('User', userSchema) //users
