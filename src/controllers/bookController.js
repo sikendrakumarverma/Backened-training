@@ -65,8 +65,8 @@ const getBooksData= async function (req, res) {
     
     // ASYNC AWAIT
     
-    let a= 2+4
-    a= a + 10
+    let a= 2+6
+    a= a + 12
     console.log(a)
     let allBooks= await BookModel.find( )  //normally this is an asynchronous call..but await makes it synchronous
 
@@ -74,8 +74,8 @@ const getBooksData= async function (req, res) {
     // WHEN AWAIT IS USED: - database + axios
     //  AWAIT can not be used inside forEach , map and many of the array functions..BE CAREFUL
     console.log(allBooks)
-    let b = 14
-    b= b+ 10
+    let b = 12
+    b= b+ 14
     console.log(b)
     res.send({msg: allBooks})
 }
