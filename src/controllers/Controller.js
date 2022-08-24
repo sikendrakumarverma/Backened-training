@@ -20,28 +20,42 @@ const createBook= async function (req, res) {
     let savedData= await bookModel.create(data)
     res.send({msg: savedData})
 }
-
+// 3(a)
 const getAuthorname= async function (req, res) {
-    //let data= req.body
-    // let temp=[]
-    // for(let i=0;i<authorModel.length;i++)
-    let savedData= await authorModel.find( { author_id:1 } ).select({  author_name:"Chetan Bhagat" })
-    res.send({msg: savedData})
+    // practice
+    // //let data= req.body
+    // // let temp=[]
+    // // for(let i=0;i<authorModel.length;i++)
+    // let savedData= await authorModel.find( { author_id:1 } ).select({  author_name:"Chetan Bhagat" })
+    // res.send({msg: savedData})
+
+    let myauthor = await authorModel.findOne({  author_name:"Chetan Bhagat" })
+    console.log(myauthor)
+    let allBooks= await bookModel.find({author_id:myauthor.author_id}).select({bookNme:1})
+    res.send({msg: allBooks})
 }
 const getUpdatedbook= async function (req, res) {
-
-    // let savedData= await bookModel.find( {  author_id:1 } ).select({name:"Two states"}).update({price:50},{$set:{price:100},{new:true}})
+    // practice
+    // // let savedData= await bookModel.find( {  author_id:1 } ).select({name:"Two states"}).update({price:50},{$set:{price:100},{new:true}})
+    // // res.send({msg: savedData})
+    // let savedData= await bookModel.findOneAndUpdate({author_id:1},{name:"Two states"},{price:50},{$set:[{price:100},{new:true}]})
     // res.send({msg: savedData})
-    let savedData= await bookModel.findOneAndUpdate({author_id:1},{name:"Two states"},{price:50},{$set:[{price:100},{new:true}]})
-    res.send({msg: savedData})
-    // let newprice= savedData.find({name:"Two states"})//.update({$set:{price:100},{new:true}})
-    // res.send({msg:newprice })
+    // // let newprice= savedData.find({name:"Two states"})//.update({$set:{price:100},{new:true}})
+    // // res.send({msg:newprice })
+
+    let myBook= await bookModel.findOneAndUpdate({bookName:"Two states"},{$set:{price:100}},{new:true});
+    console.log(myBook);
+    let authorData= await authorModel.find({author_id:myBook.author_id}).select({author_name:1})
+    res.send({msg:authorData })
+
 }
 
 const getPriceBook=async function(req, res) {
-    let savedData= await bookModel.find( { price : { $gte: 50, $lte: 100} } ).select({ author_id :1})
-    res.send({msg: savedData})
-    let 
+    let savedData= await bookModel.find( { price : { $gte: 50, $lte: 100} } ) //.select({ author_id :1});
+    console.log(savedData);
+    let allAuthorNameBook= await authorModel.find({author_name:savedData.author_name}).select({ author_id :1});
+    res.send({msg: allAuthorNameBook})
+    
 }
 
 module.exports.createAuthor=createAuthor 
