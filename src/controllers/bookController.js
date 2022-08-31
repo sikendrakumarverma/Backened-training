@@ -42,7 +42,8 @@ const createBook = async function (req, res) {
 // -- ALL GOOD... //status(200)- OK
 // --- "ALL GOOD and A NEW RESOURCE WAS SUCCEFULLY CREATED" ...status(201)..e.g a new user registers herself successfully
 
-
+//----------------WE ALSO WANT TO USE-------------------------------------------------------------------------------
+//----------------THROW AND FINALLY---------------------------------------------------------------------------------
 
 
 
